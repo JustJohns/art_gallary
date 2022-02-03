@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos and Ninjas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-success m-3 float-end" href="/logout">Logout</a>
+                <a class="text-primary m-3 float-end" href="/paintings">Dashboard</a>
+                <form class="container" action="/paintings/create_painting" method='post'>
+                    <input type="hidden" value="{{ artist_id }}" name="artist_id">
+                    <h1>Add a Painting</h1>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" name="title">
+
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" class="form-control" name="price">
+
+                    <button type="submit" class="btn btn-primary mt-2 border">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
